@@ -7,12 +7,12 @@ spec:
   project: default
 
   source:
-    repoURL: https://gitlab.com/nanuchi/argocd-app-config.git
+    repoURL: nayem9b/sheba-backend-github-build
     targetRevision: HEAD
     path: dev
   destination: 
     server: https://kubernetes.default.svc
-    namespace: myapp
+    namespace: sheba
 
   syncPolicy:
     syncOptions:

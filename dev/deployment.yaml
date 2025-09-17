@@ -1,19 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: myapp
+  name: sheba-backend
 spec:
   selector:
     matchLabels:
-      app: myapp
+      app: sheba-backend
   replicas: 2
   template:
     metadata:
       labels:
-        app: myapp
+        app: sheba-backend
+    namespace: sheba
     spec:
       containers:
-      - name: myapp
-        image: nanajanashia/argocd-app:1.2
+      - name: sheba-backend
+        image: nayem9b/sheba-backend-github-build
         ports:
-        - containerPort: 8080
+        - containerPort: 3000
+        - containerPort: 4000
