@@ -2,12 +2,12 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: myapp-argo-application
-  namespace: argocd
+  namespace: default
 spec:
   project: default
 
   source:
-    repoURL: nayem9b/sheba-backend-github-build
+    repoURL: https://github.com/nayem9b/sheba-CD.git
     targetRevision: HEAD
     path: dev
   destination: 
@@ -21,3 +21,5 @@ spec:
     automated:
       selfHeal: true
       prune: true
+
+# kubectl apply -f application.yaml
