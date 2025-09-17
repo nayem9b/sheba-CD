@@ -5,13 +5,14 @@ metadata:
   namespace: sheba
 spec:
   selector:
-    app: myapp
+    app: sheba-backend
   ports:
-  - port: 3000
-    protocol: TCP
-    targetPort: 3000
-  - port: 4000
-    protocol: TCP
-    targetPort: 4000
+    - name: http-3000   # << required
+      port: 3000
+      targetPort: 3000
+      protocol: TCP
+    - name: http-4000   # << required
+      port: 4000
+      targetPort: 4000
+      protocol: TCP
   type: LoadBalancer
-  

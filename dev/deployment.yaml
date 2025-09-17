@@ -15,7 +15,8 @@ spec:
     spec:
       containers:
       - name: sheba-backend
-        image: nayem9b/sheba-backend-github-build
+        image: nayem9b/sheba-backend-github-build:latest
+        imagePullPolicy: Always
         ports:
         - containerPort: 3000
         - containerPort: 4000
