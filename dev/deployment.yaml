@@ -16,6 +16,27 @@ spec:
       containers:
       - name: sheba-backend
         image: nayem9b/sheba-backend-github-build:latest
+        env:
+        - name: NODE_ENV
+          valueFrom:
+            configMapKeyRef:
+              name: sheba-config
+              key: NODE_ENV
+        - name: PORT 
+          valueFrom:
+            configMapKeyRef:
+              name: sheba-config
+              key: PORT
+        - name: JWT_ACCESS_EXPIRES_IN
+          valueFrom:
+            configMapKeyRef:
+              name: sheba-config
+              key: JWT_ACCESS_EXPIRES_IN
+        - name: JWT_REFRESH_EXPIRES_IN
+          valueFrom:
+            configMapKeyRef:
+              name: sheba-config
+              key: JWT_REFRESH_EXPIRES_IN
         imagePullPolicy: Always
         ports:
         - containerPort: 3000
