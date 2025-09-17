@@ -114,7 +114,7 @@ spec:
           valueFrom:
             secretKeyRef:
               name: sheba-secret
-              key: SSL_BASE_VALIDATION_URL    
+              key: SSL_BASE_VALIDATION_URL       
         - name: STORE_PASS
           valueFrom:
             secretKeyRef:
