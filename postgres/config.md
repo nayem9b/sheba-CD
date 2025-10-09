@@ -1,4 +1,4 @@
-Host name/address -> postgres-headless.default.svc.cluster.local
+Host name/address -> postgres-headless.database.svc.cluster.local
 maintainance database -> sheba_db
 username -> sheba
 password -> supersecretpassword

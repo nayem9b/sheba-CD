@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: pgadmin
-  namespace: default
+  namespace: database
   labels:
     app: pgadmin
 spec:
