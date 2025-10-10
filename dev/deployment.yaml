@@ -14,21 +14,21 @@ spec:
       labels:
         app: sheba-backend
     spec:
-      initContainers:
-        - name: prisma-migrate
-          image: nayem9b/sheba-backend-github-build:latest
-          command: ["sh", "-c"]
-          args:
-            - |
-              echo "🔄 Running Prisma migration...";
-              npx prisma migrate deploy --schema=./prisma/schema.prisma;
-              echo "✅ Migration completed.";
-          env:
-            - name: DATABASE_URL
-              valueFrom:
-                secretKeyRef:
-                  name: sheba-db-secret
-                  key: DATABASE_URL
+      # initContainers:
+      #   - name: prisma-migrate
+      #     image: nayem9b/sheba-backend-github-build:latest
+      #     command: ["sh", "-c"]
+      #     args:
+      #       - |
+      #         echo "🔄 Running Prisma migration...";
+      #         npx prisma migrate deploy --schema=./prisma/schema.prisma;
+      #         echo "✅ Migration completed.";
+      #     env:
+      #       - name: DATABASE_URL
+      #         valueFrom:
+      #           secretKeyRef:
+      #             name: sheba-db-secret
+      #             key: DATABASE_URL
       containers:
         - name: sheba-backend
           image: nayem9b/sheba-backend-github-build:latest
