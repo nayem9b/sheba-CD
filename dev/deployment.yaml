@@ -17,6 +17,12 @@ spec:
       containers:
         - name: sheba-backend
           image: nayem9b/sheba-backend-github-build:latest
+          command: ["sh", "-c"]
+          args:
+            - |
+              echo "Running Prisma migration...";
+              npx prisma migrate deploy --schema=./prisma/schema.prisma;
+              echo "✅ Migration completed.";
           imagePullPolicy: Always
           ports:
             - containerPort: 3000
