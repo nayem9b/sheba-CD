@@ -4,7 +4,7 @@ metadata:
   name: sheba-frontend-service
   namespace: sheba
 spec:
-  type: NodePort
+  type: LoadBalancer
   selector:
     app: sheba-frontend
   ports:

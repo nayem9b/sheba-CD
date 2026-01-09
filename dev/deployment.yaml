@@ -140,7 +140,7 @@ spec:
     spec:
       containers:
         - name: sheba-frontend
-          image: nayem9b/sheba-frontend-github-build:latest
+          image: nayem9b/sheba:latest
           imagePullPolicy: Always
           ports:
             - containerPort: 5000
