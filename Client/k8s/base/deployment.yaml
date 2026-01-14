@@ -1,0 +1,91 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sheba-frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sheba-frontend
+  template:
+    metadata:
+      labels:
+        app: sheba-frontend
+    spec:
+      containers:
+        - name: sheba-frontend
+          image: nayem9b/sheba-frontend-github-build:PLACEHOLDER_TAG
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 5000
+          env:
+            - name: NODE_ENV
+              valueFrom:
+                configMapKeyRef:
+                  name: sheba-frontend-config
+                  key: NODE_ENV
+            - name: PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: sheba-frontend-config
+                  key: PORT
+            - name: CLERK_PUBLISHABLE_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: sheba-frontend-secret
+                  key: CLERK_PUBLISHABLE_KEY
+            - name: CLERK_SECRET_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: sheba-frontend-secret
+                  key: CLERK_SECRET_KEY
+            - name: NEXTAUTH_URL
+              valueFrom:
+                secretKeyRef:
+                  name: sheba-frontend-secret
+                  key: NEXTAUTH_URL
+            - name: NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: sheba-frontend-secret
+                  key: NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY
+            - name: IMG_BB_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: sheba-frontend-secret
+                  key: IMG_BB_KEY
+            - name: NEXT_PUBLIC_CLERK_SIGN_IN_URL
+              valueFrom:
+                secretKeyRef:
+                  name: sheba-frontend-secret
+                  key: NEXT_PUBLIC_CLERK_SIGN_IN_URL
+            - name: NEXT_PUBLIC_CLERK_AFTER_SIGN_IN_URL
+              valueFrom:
+                secretKeyRef: 
+                  name: sheba-frontend-secret
+                  key: NEXT_PUBLIC_CLERK_AFTER_SIGN_IN_URL
+            - name: NEXT_PUBLIC_CLERK_AFTER_SIGN_UP_URL
+              valueFrom:
+                secretKeyRef:
+                  name: sheba-frontend-secret
+                  key: NEXT_PUBLIC_CLERK_AFTER_SIGN_UP_URL
+            - name: adminpass
+              valueFrom:
+                secretKeyRef:
+                  name: sheba-frontend-secret
+                  key: adminpass
+            - name: WEBHOOK_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: sheba-frontend-secret
+                  key: WEBHOOK_SECRET
+            - name: GOOGLE_ID
+              valueFrom:
+                secretKeyRef:
+                  name: sheba-frontend-secret
+                  key: GOOGLE_ID
+            - name: GOOGLE_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: sheba-frontend-secret
+                  key: GOOGLE_SECRET
