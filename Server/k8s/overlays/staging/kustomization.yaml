@@ -7,11 +7,11 @@ resources:
   - ../../base
 
 images:
-  - name: nayem9b/bookify-client-github-build
-    newTag: 0.0.1  
+  - name: nayem9b/bookify-backend-github-build
+    newTag: latest  
 
 patches:
 - path: deployment-patch.yaml
   target:
     kind: Deployment
-    name: bookify-client
+    name: bookify-backend

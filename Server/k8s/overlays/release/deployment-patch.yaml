@@ -1,13 +1,13 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: bookify-client
+  name: bookify-backend
 spec:
   replicas: 3  # More replicas for production
   template:
     spec:
       containers:
-      - name: bookify-client
+      - name: bookify-backend
         env:
         - name: ENV
           value: "production"

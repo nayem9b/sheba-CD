@@ -1,13 +1,13 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: bookify-client
+  name: bookify-backend
 spec:
   replicas: 2  # Standard replicas for staging
   template:
     spec:
       containers:
-      - name: bookify-client
+      - name: bookify-backend
         env:
         - name: ENV
           value: "staging"
