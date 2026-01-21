@@ -1,0 +1,58 @@
+# apiVersion: monitoring.coreos.com/v1
+# kind: ServiceMonitor
+# metadata:
+#   name: sheba-backend-monitor
+#   namespace: monitoring
+#   labels:
+#     release: my-kube-prometheus-stack
+#     app: sheba-backend
+# spec:
+#   selector:
+#     matchLabels:
+#       app: sheba-backend  # This must match labels on your Service
+#   endpoints:
+#     - port: http-5000  # This must match the port name in your Service
+#       path: /metrics   # Path where your application exposes metrics
+#       interval: 15s
+#       scrapeTimeout: 10s
+#       honorLabels: true
+#   namespaceSelector:
+#     matchNames:
+#       - dev         # Namespace where your app is deployed
+#       - default
+
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: sheba-backend-monitor
+  namespace: monitoring
+  labels:
+    release: my-kube-prometheus-stack
+    app: sheba-backend
+spec:
+  selector:
+    matchLabels:
+      app: sheba-backend
+  endpoints:
+    - port: http-3000
+      path: /metrics
+      interval: 30s
+      scrapeTimeout: 10s
+      honorLabels: true
+      relabelings:
+        - sourceLabels: [__meta_kubernetes_pod_node_name]
+          action: replace
+          targetLabel: node
+        - sourceLabels: [__meta_kubernetes_namespace]
+          action: replace
+          targetLabel: namespace
+        - sourceLabels: [__meta_kubernetes_pod_name]
+          action: replace
+          targetLabel: pod
+  jobLabel: app
+  podTargetLabels:
+    - app
+  namespaceSelector:
+    matchNames:
+      - dev
+      - default
