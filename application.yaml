@@ -22,4 +22,3 @@ spec:
       selfHeal: true
       prune: true
 
-# kubectl apply -f application.yaml
