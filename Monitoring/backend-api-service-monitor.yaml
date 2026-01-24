@@ -18,7 +18,7 @@
 #       honorLabels: true
 #   namespaceSelector:
 #     matchNames:
-#       - dev         # Namespace where your app is deployed
+#       - dev         
 #       - default
 
 apiVersion: monitoring.coreos.com/v1
